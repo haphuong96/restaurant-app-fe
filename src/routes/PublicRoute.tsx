@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import PublicNavbar from "./components/shared/PublicNavBar";
+import PublicNavbar from "../components/shared/PublicNavbar";
 
 const PublicRoute = () => {
   return (

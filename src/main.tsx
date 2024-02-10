@@ -8,18 +8,27 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { publicRoutes } from "./routes.tsx";
-import PublicRoute from "./PublicRoute.tsx";
+import { adminRoutes, publicRoutes } from "./routes/routes.tsx";
+import PublicRoute from "./routes/PublicRoute.tsx";
+import AdminRoute, { AdminDashboardLoader, adminSignInLoader } from "./routes/AdminRoute.tsx";
+import AdminSignIn from "./pages/admin/AdminSignIn.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route element={<App />}>
       {/* routes here */}
-      <Route element={<PublicRoute />}>
+      <Route path="/" element={<PublicRoute />}>
         {publicRoutes.map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))}
       </Route>
+      <Route path="/admin/signin" element={<AdminSignIn />} loader={adminSignInLoader}></Route>
+      <Route path="/admin/dashboard" element={<AdminRoute />}>
+        {adminRoutes.map((route) => (
+          <Route key={route.path} path={route.path} element={route.element} loader={AdminDashboardLoader}/>
+        ))}
+      </Route>
+      
     </Route>
   )
 );

@@ -15,7 +15,7 @@ const PublicNavbar = () => {
         </div>
         <div className="flex justify-self-end self-start mt-2 mr-16">
           {[Language, Phone, Heart, Basket, User].map((icon, index) => (
-            <img className="w-6 m-3" src={icon} alt="icon" />
+            <img className="w-6 m-3" key={index} src={icon} alt="icon" />
           ))}
         </div>
       </div>

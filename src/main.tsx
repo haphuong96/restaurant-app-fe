@@ -8,9 +8,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { adminRoutes, publicRoutes } from "./routes/routes.tsx";
+import { adminRoutes, publicRoutes, adminDashboardLoader, adminSignInLoader } from "./routes/routes.tsx";
 import PublicRoute from "./routes/PublicRoute.tsx";
-import AdminRoute, { AdminDashboardLoader, adminSignInLoader } from "./routes/AdminRoute.tsx";
+import AdminRoute from "./routes/AdminRoute.tsx";
 import AdminSignIn from "./pages/admin/AdminSignIn.tsx";
 
 const router = createBrowserRouter(
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
       <Route path="/admin/signin" element={<AdminSignIn />} loader={adminSignInLoader}></Route>
       <Route path="/admin/dashboard" element={<AdminRoute />}>
         {adminRoutes.map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} loader={AdminDashboardLoader}/>
+          <Route key={route.path} path={route.path} element={route.element} loader={adminDashboardLoader}/>
         ))}
       </Route>
       

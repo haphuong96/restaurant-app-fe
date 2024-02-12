@@ -1,9 +1,10 @@
-import { ADMIN_API, API } from "../base";
+import { AxiosResponse } from "axios";
+import { ADMIN_API } from "../base";
 import { handleApiError } from "../utils";
 
 export const getOrderList = async() => {
     try {
-        const res = await ADMIN_API.get("order/");
+        const res : AxiosResponse = await ADMIN_API.get("order/");
 
         return { error: null, data: res.data};
     } catch (error) {
@@ -13,7 +14,7 @@ export const getOrderList = async() => {
 
 export const getProductList = async() => {
     try {
-        const res = await ADMIN_API.get("product/");
+        const res : AxiosResponse = await ADMIN_API.get("product/");
 
         return { error: null, data: res.data};
     } catch (error) {

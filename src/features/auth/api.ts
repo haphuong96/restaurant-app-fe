@@ -1,11 +1,11 @@
 import { AxiosResponse } from "axios";
-import { API } from "../base";
+import { PUBLIC_API } from "../base";
 import { SignInForm } from "./types";
 import { handleApiError } from "../utils";
 
 export const signIn = async(credential: SignInForm) => {
     try {
-        const res : AxiosResponse = await API.post("auth/login/", credential);
+        const res : AxiosResponse = await PUBLIC_API.post("auth/login/", credential);
         localStorage.setItem("profile", JSON.stringify(res.data));
 
         return { error: null, data: res.data};
@@ -17,7 +17,7 @@ export const signIn = async(credential: SignInForm) => {
 
 export const refreshToken = async(refresh: string) => {
     try {
-        const res : AxiosResponse = await API.post("auth/refresh/", { refresh });
+        const res : AxiosResponse = await PUBLIC_API.post("auth/refresh/", { refresh });
 
         localStorage.setItem("profile", JSON.stringify(res.data));
 
